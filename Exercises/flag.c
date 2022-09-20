@@ -18,7 +18,7 @@ int	main(void)
 		}
 		i++;
 	}
-	out = malloc((j + 2) * sizeof(*out));
+	out = malloc(j * sizeof(*out));
 	i = 0;
 	while (str[i] != '\0')
 	{
@@ -30,6 +30,7 @@ int	main(void)
 				out[j] = str[i + j + 1];
 				j++;
 			}
+			out[j] = '\0';
 		}
 		i++;
 	}
