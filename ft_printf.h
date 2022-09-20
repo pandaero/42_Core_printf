@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 14:30:39 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/20 15:38:37 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:40:00 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@ int		ft_print_char(char ch);
 int		ft_print_str_fmt(const char *str, const char *flags);
 //Function prints out a formatted pointer address.
 int		ft_print_ptr_fmt(void *ptr, const char *flags);
-//Helpers
 //Function identifies the format types. Returns 1 or 0.
 int		types(char ch);
+//Function identifies a character as a format flag type. Returns 1 or 0.
+int		flagtypes(char ch);
+//Function works out the minimum width parameter from a format flag specifier.
+int flagwidth(const char *flags);
 //Function reads a format variable type after a determined starting location.
 char	typeread(const char *string, int start);
 //Function reads format flags after a determined starting location. Alloc's str.
