@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 14:27:10 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/20 15:21:00 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:49:42 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*flagread(const char * string, int start)
 		j++;
 	if (j == 1)
 	{
-		flagout = malloc(1 * (*flagout));
+		flagout = malloc(1 * sizeof(*flagout));
 		flagout[0] = '\0';
 		return (flagout);
 	}
