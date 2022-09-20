@@ -51,5 +51,9 @@ int	main(void)
 	out4 = flagread(str2, 31);
 	printf("In: %s, Flag: %s\n", str1, out1);
 	printf("In: %s, Flag1: %s, Flag2: %s, Flag3: %s\n", str2, out2, out3, out4);
+	free(out1);
+	free(out2);
+	free(out3);
+	free(out4);
 	return (0);
 }
