@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 18:04:29 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/20 18:10:43 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/25 09:43:03 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_print_int(int num)
 	count = 0;
 	if (num == INT_MIN)
 	{
-		count = write(1, "-2147483648", 12);
+		count = write(1, "-2147483648", 11);
 		return (count);
 	}
 	if (num < 0)
