@@ -6,14 +6,15 @@
 #    By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 13:13:17 by pandalaf          #+#    #+#              #
-#    Updated: 2022/09/25 10:02:35 by pandalaf         ###   ########.fr        #
+#    Updated: 2022/09/25 14:43:47 by pandalaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libftprintf.a
 CC := gcc
 CFLAGS := -Wall -Werror -Wextra
-SRCS := ft_printf.c
+SRCS := ft_printf.c type_reader.c ft_print_int.c ft_print_unsigned.c\
+		ft_print_hex.c ft_print_ptr.c ft_print_char.c ft_print_str.c
 BSRCS := 
 OBJ_DIR := obj/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
