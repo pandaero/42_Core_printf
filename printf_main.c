@@ -15,7 +15,6 @@ int	main(void)
 	str = "Hello";
 	u = 150;
 	count = 0;
-	//*
 	count = ft_printf("-----------ft_printf-----------\n");
 	ft_printf("Count: %d\n", count);
 	count = ft_printf("Char: %c\n", ch);//, Pointer: %p, String: %s\n", ch, str, str);
@@ -30,7 +29,8 @@ int	main(void)
 	count = ft_printf("--flag: %-5d, 0-flag: %05d, .-flag: %.5d\n", i, i, i);
 	ft_printf("Line: %d\n", len);
 	count = ft_printf("#-flag: %#5X, _-flag: % 5d, +-flag: %+d\n", u, i, i);
-	ft_printf("Line: %d\n", len);count/*/ft_
+	ft_printf("Line: %d\n", len);count
+	//*/
 	len = printf("--------------printf-----------\n");
 	printf("Count: %d\n", len);
 	len = printf("Char: %c, Pointer: %p, String: %s\n", ch, str, str);
