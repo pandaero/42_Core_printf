@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:13:51 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/20 16:01:55 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:53:06 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	converter(va_list args, char type, const char *flags)
 	return (count);
 }
 
-//Function passes specifier flags to output functions based on type.
+//Function passes specifier flags to converter.
 int	interpreter(va_list args, int start, const char *format)
 {
 	char	type;
@@ -45,7 +45,7 @@ int	interpreter(va_list args, int start, const char *format)
 	int		count;
 
 	count = 0;
-	if (type == '%')
+	if (format[start + 1] == '%')
 	{
 		count += ft_print_char('%');
 		return (count);
