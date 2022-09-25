@@ -6,11 +6,27 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 11:30:49 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/25 12:23:39 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/25 12:42:54 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+//Function prints a hexadecimal prefix to the standard output.
+int	hex_prefix_printer(int cas)
+{
+	int	count;
+
+	count = 0;
+	if (cas != 0 && cas != 1)
+		return (0);
+	count += ft_print_char('0');
+	if (cas == 0)
+		count += ft_print_char('X');
+	if (cas == 1)
+		count += ft_print_char('x');
+	return (count);
+}
 
 //Function converts a hexadecimal value to base 16 character. Case is toggled.
 static int	hex_digit_printer(int num, int cas)
