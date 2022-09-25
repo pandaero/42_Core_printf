@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:13:51 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/20 20:53:06 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/25 14:01:19 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,34 @@
 #include <stdlib.h>
 #include "ft_printf.h"
 
-//Function interprets specified format flags and type. Passes them for writing.
-int	converter(va_list args, char type, const char *flags)
+//Function calls format printers for writing to standard output by type.
+static int	converter(va_list args, char type)
 {
 	int	count;
 
+	count = 0;
 	if (type == 'd' || type == 'i')
-		count = ft_print_int_fmt(va_arg(args, int), flags);
+		count = ft_print_int(va_arg(args, int));
 	else if (type == 'c')
 		count = ft_print_char(va_arg(args, int));
 	else if (type == 's')
-		count = ft_print_str_fmt(va_arg(args, char *), flags);
+		count = ft_print_str(va_arg(args, char *));
 	else if (type == 'u')
-		count = ft_print_unsigned_fmt(va_arg(args, unsigned int), flags);
+		count = ft_print_unsigned(va_arg(args, unsigned int));
 	else if (type == 'p')
-		count = ft_print_ptr_fmt(va_arg(args, void *), flags);
+		count = ft_print_ptr(va_arg(args, void *));
 	else if (type == 'x')
-		count = ft_print_hex_fmt(va_arg(args, unsigned int), flags, 1);
+		count = ft_print_hex(va_arg(args, unsigned int), 1);
 	else if (type == 'X')
-		count = ft_print_hex_fmt(va_arg(args, unsigned int), flags, 0);
+		count = ft_print_hex(va_arg(args, unsigned int), 0);
 	return (count);
 }
 
-//Function passes specifier flags to converter.
-int	interpreter(va_list args, int start, const char *format)
+//Function begins an interpretation by the converter according to the start pos.
+static int	interpreter(va_list args, int start, const char *format)
 {
-	char	type;
-	char	*flags;
 	int		count;
+	char	type;
 
 	count = 0;
 	if (format[start + 1] == '%')
@@ -50,10 +50,8 @@ int	interpreter(va_list args, int start, const char *format)
 		count += ft_print_char('%');
 		return (count);
 	}
-	flags = flagread(format, start);
 	type = typeread(format, start);
-	count += converter(args, type, flags);
-	free(flags);
+	count += converter(args, type);
 	return (count);
 }
 
@@ -72,7 +70,7 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			count += interpreter(args, i, format);
-			i += ft_strlen(flagread(format, i)) + 1;
+			i += 1;
 		}
 		else
 			count += write(1, &format[i], 1);
