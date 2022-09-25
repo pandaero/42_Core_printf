@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 11:30:49 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/25 12:05:21 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/25 12:23:39 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_print_hex(unsigned int num, int cas)
 {
 	int		count;
 	int		i;
-	char	ch[20];
+	char	ch[8];
 
 	if (num == 0)
 		return (ft_print_char('0'));
