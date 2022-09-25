@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 18:04:29 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/25 11:26:57 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/25 14:38:42 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static int	ft_print_int_special(int num)
 		return (ft_print_char('0'));
 	if (num == INT_MIN)
 		return (ft_print_int_min());
+	return (0);
 }
 
 //Function prints an integer to standard output, unformatted. Returns written.
