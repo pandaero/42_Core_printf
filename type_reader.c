@@ -6,14 +6,14 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 13:15:27 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/25 14:23:45 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 04:40:31 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //Function identifies the format types. Returns 1 or 0.
 int	types(char ch)
 {
-	if (ch == 'c' || ch == 's' || ch == 'p' || ch == 's' || ch == 'x')
+	if (ch == 'c' || ch == 's' || ch == 'p' || ch == 'x')
 		return (1);
 	else if (ch == 'd' || ch == 'i' || ch == 'u' || ch == 'X')
 		return (1);
