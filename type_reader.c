@@ -6,12 +6,12 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 13:15:27 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/26 04:41:18 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 07:14:12 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //Function identifies the format types. Returns 1 or 0.
-int	types(char ch)
+int	type_checker(char ch)
 {
 	if (ch == 'c' || ch == 's' || ch == 'p' || ch == 'x')
 		return (1);
@@ -21,12 +21,12 @@ int	types(char ch)
 }
 
 //Function reads a type specifier after a determined starting location.
-char	typeread(const char *string, int start)
+char	type_reader(const char *string, int start)
 {
 	int	i;
 
 	i = 0;
-	while (types(string[start + i]) == 0)
+	while (type_checker(string[start + i]) == 0)
 		i++;
 	return (string[start + i]);
 }

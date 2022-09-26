@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:13:51 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/25 14:01:19 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 07:16:22 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	interpreter(va_list args, int start, const char *format)
 		count += ft_print_char('%');
 		return (count);
 	}
-	type = typeread(format, start);
+	type = type_reader(format, start);
 	count += converter(args, type);
 	return (count);
 }
