@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 06:28:08 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/26 06:32:14 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 08:07:44 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	width_checker(const char *flags)
 	int	i;
 
 	i = 0;
-	while (flagtypes(flags[i]) == 1)
+	while (flag_checker(flags[i]) == 1)
 		i++;
 	if (flags[i] >= '1' && flags[i] <= '9')
 		return (1);
@@ -47,7 +47,7 @@ unsigned int	width_reader(const char *flags)
 	unsigned int	width;
 
 	i = 0;
-	while (flagtypes(flags[i]) == 1)
+	while (flag_checker(flags[i]) == 1)
 		i++;
 	width = 0;
 	while (ft_isdigit(flags[i]) == 1)
@@ -68,7 +68,7 @@ unsigned int	precision_reader(const char *flags)
 	while (flags[i] != '.')
 		i++;
 	prec = 0;
-	while (types(flags[i + 1]) == 0)
+	while (type_checker(flags[i + 1]) == 0)
 	{
 		prec = prec * 10 + (flags[i + 1] - '0');
 		i++;

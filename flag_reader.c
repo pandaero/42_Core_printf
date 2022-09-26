@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag_interpreter.c                                 :+:      :+:    :+:   */
+/*   flag_reader.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:00:50 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/26 06:37:38 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 08:08:25 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_printf_bonus.h"
 
 //Function identifies a character as a format flag type. Returns 1 or 0.
-int	flagtypes(char ch)
+int	flag_checker(char ch)
 {
 	if (ch == '-' || ch == '0' || ch == '.' || ch == '%')
 		return (1);
@@ -24,7 +24,7 @@ int	flagtypes(char ch)
 }
 
 //Function reads format flags after a determined starting location. Alloc's str.
-char	*flagread(const char * string, int start)
+char	*flag_reader(const char * string, int start)
 {
 	char	*flagout;
 	int		i;
@@ -32,7 +32,7 @@ char	*flagread(const char * string, int start)
 
 	i = start;
 	j = 0;
-	while (string[i + j] != '\0' && types(string[i + j]) == 0)
+	while (string[i + j] != '\0' && type_checker(string[i + j]) == 0)
 		j++;
 	if (j == 1)
 	{
@@ -42,7 +42,7 @@ char	*flagread(const char * string, int start)
 	}
 	flagout = malloc(j * sizeof(*flagout));
 	j = 0;
-	while (types(string[i + j + 1]) == 0)
+	while (type_checker(string[i + j + 1]) == 0)
 	{
 		flagout[j] = string[i + j + 1];
 		j++;

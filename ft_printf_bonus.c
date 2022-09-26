@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 12:14:25 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/26 06:50:12 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 07:15:49 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ static int	interpreter(va_list args, int start, const char *format)
 		count += ft_print_char('%');
 		return (count);
 	}
-	flags = flagread(format, start);
-	type = typeread(format, start);
+	flags = flag_reader(format, start);
+	type = type_reader(format, start);
 	if (flags[0] == '\0')
 		count += converter(args, type);
 	else
@@ -99,7 +99,7 @@ int	ft_printf_bonus(const char *format, ...)
 		if (format[i] == '%')
 		{
 			count += interpreter(args, i, format);
-			flags = flagread(format, i);
+			flags = flag_reader(format, i);
 			i += ft_strlen(flags) + 1;
 			free(flags);
 		}
