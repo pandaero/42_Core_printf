@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 14:30:39 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/25 14:22:55 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 04:41:34 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int		ft_print_str(const char *str);
 int		hex_prefix_printer(int cas);
 //Function identifies the format types. Returns 1 or 0.
 int		types(char ch);
-//Function reads a format variable type after a determined starting location.
+//Function reads a type specifier after a determined starting location.
 char	typeread(const char *string, int start);
 #endif

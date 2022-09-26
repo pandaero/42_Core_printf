@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 13:15:27 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/26 04:40:31 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 04:41:18 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	types(char ch)
 	return (0);
 }
 
-//Function reads a format variable type after a determined starting location.
+//Function reads a type specifier after a determined starting location.
 char	typeread(const char *string, int start)
 {
 	int	i;
