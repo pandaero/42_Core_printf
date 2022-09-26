@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 12:14:25 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/25 15:45:19 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 06:50:12 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ft_printf_bonus.h"
 
 //Function passes flags to format printers for writing to standard output.
-static int	converter(va_list args, char type, const char *flags)
+static int	converter_fmt(va_list args, char type, const char *flags)
 {
 	int	count;
 
@@ -37,6 +37,29 @@ static int	converter(va_list args, char type, const char *flags)
 	return (count);
 }
 
+//Function calls standard printers for writing to standard output.
+static int	converter(va_list args, char type)
+{
+	int	count;
+
+	count = 0;
+	if (type == 'd' || type == 'i')
+		count = ft_print_int(va_arg(args, int));
+	else if (type == 'c')
+		count = ft_print_char(va_arg(args, int));
+	else if (type == 's')
+		count = ft_print_str(va_arg(args, char *));
+	else if (type == 'u')
+		count = ft_print_unsigned(va_arg(args, unsigned int));
+	else if (type == 'p')
+		count = ft_print_ptr(va_arg(args, void *));
+	else if (type == 'x')
+		count = ft_print_hex(va_arg(args, unsigned int), 1);
+	else if (type == 'X')
+		count = ft_print_hex(va_arg(args, unsigned int), 0);
+	return (count);
+}
+
 //Function reads and passes specifier flags to converter.
 static int	interpreter(va_list args, int start, const char *format)
 {
@@ -52,7 +75,10 @@ static int	interpreter(va_list args, int start, const char *format)
 	}
 	flags = flagread(format, start);
 	type = typeread(format, start);
-	count += converter(args, type, flags);
+	if (flags[0] == '\0')
+		count += converter(args, type);
+	else
+		count += converter_fmt(args, type, flags);
 	free(flags);
 	return (count);
 }
