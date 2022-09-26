@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 18:04:29 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/25 14:38:42 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 07:07:55 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ft_printf.h"
 
 //Function prints the minimum value for an integer type to the standard output.
-int	ft_print_int_min(void)
+static int	ft_print_int_min(void)
 {
 	int		count;
 
