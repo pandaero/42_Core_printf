@@ -6,12 +6,12 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:10:59 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/26 11:34:49 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 12:19:21 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 //Function prints a determined spacer for padding.
 static int	ft_print_int_spacer(const char *flags)
@@ -73,9 +73,9 @@ int	ft_print_int_fmt(int num, const char *flags)
 	}
 	if (precision_checker(flags) == 1 && leftalign(flags) == 0)
 	{
-		if (digs < precision_reader(flags))
+		if (digs < (int) precision_reader(flags))
 		{
-			while (count < precision_reader(flags) - digs)
+			while (count < (int) precision_reader(flags) - digs)
 				count += ft_print_int_spacer(flags);
 		}
 	}
@@ -91,6 +91,10 @@ int	ft_print_int_fmt(int num, const char *flags)
 //Function prints out a formatted unsigned integer based on format flags.
 int	ft_print_unsigned_fmt(unsigned int num, const char *flags)
 {
+	if (num > 0)
+		return (0);
+	if (!flags)
+		return (0);
 	return (0);
 }
 

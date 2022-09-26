@@ -6,28 +6,28 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:06:15 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/26 06:30:00 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 12:19:42 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include <unistd.h>
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 //Function prints spacing for the string width and precision specifications.
-static int	print_str_spacer(const char *str, unsigned int wide, unsigned int max)
+static int	print_str_spacer(const char *str, unsigned int wide, int max)
 {
 	int	count;
 
 	count = 0;
 	if (ft_strlen(str) < wide)
 	{
-		while (count < wide - ft_strlen(str))
+		while (count < (int) wide - (int) ft_strlen(str))
 			count += write(1, " ", 1);
 	}
-	if (max < wide)
+	if (max < (int) wide)
 	{
-		while (count < wide - max)
+		while (count < (int) wide - max)
 			count += write(1, " ", 1);
 	}
 	return (count);
@@ -37,14 +37,14 @@ static int	print_str_spacer(const char *str, unsigned int wide, unsigned int max
 int	ft_print_str_fmt(const char *str, const char *flags)
 {
 	unsigned int	count;
-	unsigned int	max;
+	int				max;
 	unsigned int	wide;
 	unsigned int	i;
 
-	max = UINT_MAX;
+	max = INT_MAX;
 	wide = 0;
 	if (precision_checker(flags) == 1)
-		max = precision_read(flags);
+		max = (int) precision_reader(flags);
 	if (width_checker(flags) == 1)
 		wide = width_reader(flags);
 	count = 0;
@@ -53,7 +53,7 @@ int	ft_print_str_fmt(const char *str, const char *flags)
 	if (leftalign(flags) == 0)
 		count += print_str_spacer(str, wide, max);
 	i = 0;
-	while (str[i] != '\0' && i < max)
+	while (str[i] != '\0' && i < (unsigned int) max)
 	{
 		count += write(1, &str[i], 1);
 		i++;

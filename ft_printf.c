@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:13:51 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/26 07:16:22 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/09/26 12:01:18 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,29 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "ft_printf.h"
+
+//Function passes flags to format printers for writing to standard output.
+static int	converter_fmt(va_list args, char type, const char *flags)
+{
+	int	count;
+
+	count = 0;
+	if (type == 'd' || type == 'i')
+		count = ft_print_int_fmt(va_arg(args, int), flags);
+	else if (type == 'c')
+		count = ft_print_char(va_arg(args, int));
+	else if (type == 's')
+		count = ft_print_str_fmt(va_arg(args, char *), flags);
+	else if (type == 'u')
+		count = ft_print_unsigned_fmt(va_arg(args, unsigned int), flags);
+	else if (type == 'p')
+		count = ft_print_ptr_fmt(va_arg(args, void *), flags);
+	else if (type == 'x')
+		count = ft_print_hex_fmt(va_arg(args, unsigned int), flags, 1);
+	else if (type == 'X')
+		count = ft_print_hex_fmt(va_arg(args, unsigned int), flags, 0);
+	return (count);
+}
 
 //Function calls format printers for writing to standard output by type.
 static int	converter(va_list args, char type)
@@ -42,6 +65,7 @@ static int	converter(va_list args, char type)
 static int	interpreter(va_list args, int start, const char *format)
 {
 	int		count;
+	char	*flags;
 	char	type;
 
 	count = 0;
@@ -50,8 +74,13 @@ static int	interpreter(va_list args, int start, const char *format)
 		count += ft_print_char('%');
 		return (count);
 	}
+	flags = flag_reader(format, start);
 	type = type_reader(format, start);
-	count += converter(args, type);
+	if (flags[0] == '\0')
+		count += converter(args, type);
+	else
+		count += converter_fmt(args, type, flags);
+	free(flags);
 	return (count);
 }
 
@@ -61,6 +90,7 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 	int		i;
 	int		count;
+	char	*flags;
 
 	va_start(args, format);
 	count = 0;
@@ -70,10 +100,12 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			count += interpreter(args, i, format);
-			i += 1;
+			flags = flag_reader(format, i);
+			i += ft_strlen(flags) + 1;
+			free(flags);
 		}
 		else
-			count += write(1, &format[i], 1);
+			count += ft_print_char(format[i]);
 		i++;
 	}
 	va_end(args);
