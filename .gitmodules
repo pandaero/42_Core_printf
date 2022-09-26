@@ -2,6 +2,3 @@
 	path = libft
 	url = https://github.com/pandaero/42_Core_libft.git
 	branch = standalone
-[submodule "tester"]
-	path = tester
-	url = https://github.com/Tripouille/printfTester.git
