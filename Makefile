@@ -6,7 +6,7 @@
 #    By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 13:13:17 by pandalaf          #+#    #+#              #
-#    Updated: 2022/10/01 21:34:48 by pandalaf         ###   ########.fr        #
+#    Updated: 2022/10/01 22:06:46 by pandalaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,11 @@ $(addprefix $(LIBFT_PATH), $(LIBFT)): $(LIBFT_PATH)
 
 clean:
 	rm -fr $(OBJ_DIR)
+	make -C $(LIBFT_PATH) clean
 
 fclean: clean
 	rm -f $(NAME)
+	make -C $(LIBFT_PATH) fclean
 
 re: fclean all
 
