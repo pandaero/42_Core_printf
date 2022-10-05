@@ -6,7 +6,7 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 12:20:45 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/09/25 14:16:50 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/10/05 09:51:03 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	ft_print_ptr(void *ptr)
 	count = 0;
 	if (!ptr)
 	{
-		count = ft_print_str(ptr);
+		count = ft_print_str("(nil)");
 		return (count);
 	}
 	count += hex_prefix_printer(1);
