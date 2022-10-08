@@ -6,7 +6,7 @@
 #    By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 13:13:17 by pandalaf          #+#    #+#              #
-#    Updated: 2022/10/01 22:06:46 by pandalaf         ###   ########.fr        #
+#    Updated: 2022/10/08 20:39:49 by pandalaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(addprefix $(LIBFT_PATH), $(LIBFT)) $(OBJS)
-	ar rcs $@ $^
+$(NAME): $(OBJS) $(addprefix $(LIBFT_PATH), $(LIBFT))
+	ar -rcs $@ $^
 
 $(addprefix $(LIBFT_PATH), $(LIBFT)): $(LIBFT_PATH)
 	make -C $(LIBFT_PATH) all
