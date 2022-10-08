@@ -6,7 +6,7 @@
 #    By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 13:13:17 by pandalaf          #+#    #+#              #
-#    Updated: 2022/10/08 21:01:52 by pandalaf         ###   ########.fr        #
+#    Updated: 2022/10/08 23:51:13 by pandalaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,17 +21,16 @@ LIBFT_PATH := libft/
 # Unconditionally included source files
 SRCS := ft_printf.c type_reader.c ft_print_int.c ft_print_unsigned.c \
 		ft_print_hex.c ft_print_char.c ft_print_str.c
-# Operating system differences
+# Object files
+OBJS = $(SRCS:.c=.o) ft_print_ptr.o
+# Operating system differences, special source
 OS = $(shell uname)
 ifeq ($(OS), Linux)
-	SRCS += ft_print_ptr_linux.c
+	SSRCS = ft_print_ptr_linux.c
 endif
 ifeq ($(OS), Darwin)
-	SRCS += ft_print_ptr_macos.C
+	SSRCS = ft_print_ptr_macos.c
 endif
-# Object files
-OBJS = $(SRCS:.c=.o)
-
 all: $(NAME)
 
 $(NAME): $(OBJS) $(addprefix $(LIBFT_PATH), $(LIBFT))
@@ -51,6 +50,9 @@ fclean: clean
 re: fclean all
 
 %.o: %.c
+	$(CC) -c $(CFLAGS) $^ -o $@
+
+ft_print_ptr.o: $(SSRCS)
 	$(CC) -c $(CFLAGS) $^ -o $@
 
 .PHONY: all clean fclean re bonus
