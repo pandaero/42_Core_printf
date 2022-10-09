@@ -6,7 +6,7 @@
 #    By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 13:13:17 by pandalaf          #+#    #+#              #
-#    Updated: 2022/10/09 12:25:51 by pandalaf         ###   ########.fr        #
+#    Updated: 2022/10/09 13:18:58 by pandalaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,14 @@ $(NAME): $(OBJS) $(addprefix $(LIBFT_PATH), $(LIBFT))
 $(addprefix $(LIBFT_PATH), $(LIBFT)): $(LIBFT_PATH)
 	make -C $(LIBFT_PATH) all
 
+# Make object files
+%.o: %.c
+	$(CC) -c $(CFLAGS) $^ -o $@
+
+# Make specific object file
+ft_print_ptr.o: $(SSRCS)
+	$(CC) -c $(CFLAGS) $^ -o $@
+
 # Clean intermediary files
 clean:
 	rm -f $(OBJS)
@@ -55,14 +63,6 @@ fclean: clean
 
 # Wipe all and make again
 re: fclean all
-
-# Make object files
-%.o: %.c
-	$(CC) -c $(CFLAGS) $^ -o $@
-
-# Make specific object file
-ft_print_ptr.o: $(SSRCS)
-	$(CC) -c $(CFLAGS) $^ -o $@
 
 # Make sure these aren't treated as files
 .PHONY: all clean fclean re bonus
