@@ -6,7 +6,7 @@
 #    By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 13:13:17 by pandalaf          #+#    #+#              #
-#    Updated: 2022/10/09 00:04:50 by pandalaf         ###   ########.fr        #
+#    Updated: 2022/10/09 12:25:51 by pandalaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,10 @@ OBJS = $(SRCS:.c=.o) ft_print_ptr.o
 
 # Operating system differences, special sources
 OS = $(shell uname)
-ifeq ($(OS), Linux)
-	SSRCS = ft_print_ptr_linux.c
-endif
 ifeq ($(OS), Darwin)
 	SSRCS = ft_print_ptr_macos.c
+else
+	SSRCS = ft_print_ptr_linux.c
 endif
 
 # Make desired targets
