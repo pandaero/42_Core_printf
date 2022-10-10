@@ -1,6 +1,7 @@
 //* Test
+// run: cc printf_main.c ../libftprintf.a
 #include <stdio.h>
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int	main(void)
 {
