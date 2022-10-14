@@ -6,11 +6,16 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 12:20:45 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/10/08 20:43:35 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/10/14 23:28:32 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#ifdef MACOS
+# define OS_PTR_MSG "0x0"
+#else
+# define OS_PTR_MSG "(nil)"
+#endif
 
 //Function converts a hexadecimal value to base 16 character. Case is toggled.
 static int	hex_digit_printer(int num, int cas)
@@ -87,7 +92,7 @@ int	ft_print_ptr(void *ptr)
 	count = 0;
 	if (!ptr)
 	{
-		count = ft_print_str("(nil)");
+		count = ft_print_str(OS_PTR_MSG);
 		return (count);
 	}
 	count += hex_prefix_printer(1);
