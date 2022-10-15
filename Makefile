@@ -6,7 +6,7 @@
 #    By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 13:13:17 by pandalaf          #+#    #+#              #
-#    Updated: 2022/10/14 23:46:35 by pandalaf         ###   ########.fr        #
+#    Updated: 2022/10/15 10:40:37 by pandalaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,9 @@ OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 
 # Operating system differences, special sources
 OS = $(shell uname)
-#ifeq ($(OS), Darwin)
+ifeq ($(OS), Darwin)
 	CFLAGS += -D MACOS
-#endif
+endif
 
 # Make desired targets
 all: directories $(NAME)
