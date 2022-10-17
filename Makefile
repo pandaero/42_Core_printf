@@ -6,7 +6,7 @@
 #    By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 13:13:17 by pandalaf          #+#    #+#              #
-#    Updated: 2022/10/15 21:01:54 by pandalaf         ###   ########.fr        #
+#    Updated: 2022/10/17 13:53:56 by pandalaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,6 @@ SRCS := ft_printf.c type_reader.c ft_print_int.c ft_print_unsigned.c \
 # Object files
 OBJ_DIR = obj/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
-
-# Operating system differences, special sources
-OS = $(shell uname)
-ifneq ($(OS), Darwin)
-	CFLAGS += -D LINUX
-endif
 
 # Make desired targets
 all: directories $(NAME)
