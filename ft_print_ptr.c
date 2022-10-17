@@ -6,14 +6,14 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 12:20:45 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/10/17 13:53:41 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/10/17 14:03:25 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-# ifdef (__linux__)
-#  define OS_PTR_MSG "(nil)"
-# else
+#if defined (__linux__)
+# define OS_PTR_MSG "(nil)"
+#else
 # define OS_PTR_MSG "0x0"
 #endif
 
