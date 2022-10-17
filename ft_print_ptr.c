@@ -6,15 +6,15 @@
 /*   By: pandalaf <pandalaf@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 12:20:45 by pandalaf          #+#    #+#             */
-/*   Updated: 2022/10/17 14:03:25 by pandalaf         ###   ########.fr       */
+/*   Updated: 2022/10/17 17:48:42 by pandalaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#if defined (__linux__)
-# define OS_PTR_MSG "(nil)"
-#else
+#if defined (__APPLE__)
 # define OS_PTR_MSG "0x0"
+#else
+# define OS_PTR_MSG "(nil)"
 #endif
 
 //Function converts a hexadecimal value to base 16 character. Case is toggled.
